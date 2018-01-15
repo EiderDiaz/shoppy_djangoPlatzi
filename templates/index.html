@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<title>hello world</title>
+	<link rel="stylesheet"  href="{% static 'css/base.css'%}">
+</head>
+<body>
+<h1 style="color: red">si que si</h1>
+<a href="{% url 'products.views.new_product' %}"> new product</a>	
+
+<ul>
+	{% for pr in product %}
+		<li>
+			<a href="{%url 'products.views.product_detail' pk=pr.pk %}"> 
+			{{pr.name}} 
+			</a>
+			| 	{{pr.description}} 
+		<img src="{{pr.image.url}}" >
+
+		</li>
+	{% endfor %}
+</ul>
+</body>
+</html>
