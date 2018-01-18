@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<title>hello world</title>
+	<link rel="stylesheet"  href="{% static 'css/base.css'%}">
+</head>
+<body>
+<h1 style="color: red">
+	Hola {% if user.is_authenticated %} <h3> {{ user.username }} | <a href="{%url 'products:logout' %}">logout </a></h3>
+	{% else %}
+	<a href="{% url 'products:authentication' %}">login</a>
+	{% endif %}
+
+</h1>
+<a href="{% url 'products:new' %}"> new products</a>
+<ul>
+	{% for pr in object_list %}
+		<li>
+			<a href="{%url 'products:detail' pr.id %}"> 
+			{{pr.name}} 
+			</a>
+			| 	{{pr.description}} 
+		<img src="{{pr.image.url}}" >
+
+		</li>	{% endfor %}
+</ul>
+</body>
+</html>
