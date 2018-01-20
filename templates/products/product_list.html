@@ -7,11 +7,14 @@
 </head>
 <body>
 <h1 style="color: red">
-	Hola {% if user.is_authenticated %} <h3> {{ user.username }} | <a href="{%url 'products:logout' %}">logout </a></h3>
+	Hola {% if user.is_authenticated %} 
+	<h3> {{ user.username }} | <a href="{%url 'products:logout' %}">logout </a></h3>
+
+	<h3>  <a href="{%url 'products:report' %}">pushale para generar un PDF bien mamalon </a></h3>
+
 	{% else %}
 	<a href="{% url 'products:authentication' %}">login</a>
 	{% endif %}
-
 </h1>
 <a href="{% url 'products:new' %}"> new products</a>
 <ul>
